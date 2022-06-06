@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/catalystsquad/terraform-k8s-catalyst-cluster-bootstrap/compare/v1.0.0...v1.0.1) (2022-06-06)
+
+
+### Bug Fixes
+
+* **docs:** add doc generation, initial readme, gitignore, license ([#2](https://github.com/catalystsquad/terraform-k8s-catalyst-cluster-bootstrap/issues/2)) ([8a4001d](https://github.com/catalystsquad/terraform-k8s-catalyst-cluster-bootstrap/commit/8a4001d2fafd59c565e198a0a71de64a272adad8))
+
 # 1.0.0 (2022-06-03)
 
 

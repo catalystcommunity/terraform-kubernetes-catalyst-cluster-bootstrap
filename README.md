@@ -1,4 +1,4 @@
-# terraform-k8s-catalyst-cluster-bootstrap
+# terraform-kubernetes-catalyst-cluster-bootstrap
 
 The module provisions Kubernetes resources for "bootstrapping" a Kubernetes
 cluster. The bootstrap process installs open source tools for operating and
@@ -18,7 +18,7 @@ Supply values to additional functionality that you require. Prometheus, ArgoCD,
 and platform-services helm chart will be deployed by default:
 ```terraform
 module "bootstrap" {
-  source = "github.com/catalystsquad/terraform-k8s-catalyst-cluster-bootstrap"
+  source = "catalystsquad/catalyst-cluster-bootstrap/kubernetes"
 
   prometheus_remote_write_username  = var.prometheus_remote_write_username
   prometheus_remote_write_password  = var.prometheus_remote_write_password
@@ -45,7 +45,7 @@ provider "kubectl" {
 }
 
 module "bootstrap" {
-  source = "github.com/catalystsquad/terraform-k8s-catalyst-cluster-bootstrap"
+  source = "catalystsquad/catalyst-cluster-bootstrap/kubernetes"
 
   platform_services_values = templatefile("./helm-values/dev-platform-services.yaml", {
     "exampleSecretInput" : var.example_secret
@@ -59,7 +59,7 @@ module "bootstrap" {
 
 ### In tandem with [catalyst-platform module](https://github.com/catalystsquad/terraform-aws-catalyst-platform)
 
-If you are using this module alongside the  [catalyst-platform module](https://github.com/catalystsquad/terraform-aws-catalyst-platform)
+If you are using this module alongside the [catalyst-platform](https://github.com/catalystsquad/terraform-aws-catalyst-platform)
 module, you must configure the Kubernetes providers with dependencies on the
 output of the platform module. This module makes use of multiple providers for
 deploying kubernetes resources, so configure each with a similar configuration:
@@ -121,13 +121,13 @@ provider "kubectl" {
 
 
 module "platform" {
-  source = "github.com/catalystsquad/terraform-aws-catalyst-platform"
+  source = "catalystsquad/catalyst-platform/aws"
 
   # other configuration ...
 }
 
 module "bootstrap" {
-  source = "github.com/catalystsquad/terraform-k8s-catalyst-cluster-bootstrap"
+  source = "catalystsquad/catalyst-cluster-bootstrap/kubernetes"
   
   depends_on = [
     module.platform
@@ -186,5 +186,5 @@ No outputs.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_platform_services"></a> [platform\_services](#module\_platform\_services) | github.com/catalystsquad/terraform-k8s-argocd-application | n/a |
+| <a name="module_platform_services"></a> [platform\_services](#module\_platform\_services) | catalystsquad/argocd-application/kubernetes | 1.0.1 |
 <!-- END_TF_DOCS -->

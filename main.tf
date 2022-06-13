@@ -101,8 +101,8 @@ resource "kubernetes_secret_v1" "cert_manager_cloudflare_api_token" {
 module "platform_services" {
   count = var.enable_platform_services ? 1 : 0
 
-  # TODO fix this reference to use terraform registry after initial release
-  source = "github.com/catalystsquad/terraform-k8s-argocd-application"
+  source  = "catalystsquad/argocd-application/kubernetes"
+  version = "1.0.1"
 
   name                   = "platform-services"
   source_chart           = "platform-services"

@@ -186,5 +186,5 @@ No outputs.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_platform_services"></a> [platform\_services](#module\_platform\_services) | github.com/catalystsquad/terraform-kubernetes-argocd-application | n/a |
+| <a name="module_platform_services"></a> [platform\_services](#module\_platform\_services) | catalystsquad/argocd-application/kubernetes | 1.0.1 |
 <!-- END_TF_DOCS -->

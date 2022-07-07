@@ -30,14 +30,14 @@ variable "kube_prometheus_stack_values" {
 
 variable "argo_cd_chart_version" {
   description = "Version of the argo-cd helm chart to deploy."
-  type    = string
-  default = "3.33.8"
+  type        = string
+  default     = "3.33.8"
 }
 
 variable "argo_cd_values" {
   description = "Values of the argo-cd helm chart to deploy."
-  type    = list(string)
-  default = []
+  type        = list(string)
+  default     = []
 }
 
 variable "prometheus_remote_write_secret_name" {

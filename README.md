@@ -6,7 +6,7 @@ monitoring Kubernetes, including the following:
 
 * [Argo CD](https://argo-cd.readthedocs.io/en/stable/)
 * [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack), deployed outside of the chart-platform-services helm chart to allow for Prometheus custom resources to be deployed successfully if enabled in the ArgoCD helm chart.
-* [chart-platform-services](https://github.com/catalystsquad/chart-platform-services) from Catalyst Squad, which includes various other open-source tools deployed via an [ArgoCD app of apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern).
+* [chart-platform-services](https://github.com/catalystcommunity/chart-platform-services) from Catalyst Squad, which includes various other open-source tools deployed via an [ArgoCD app of apps pattern](https://argo-cd.readthedocs.io/en/stable/operator-manual/cluster-bootstrapping/#app-of-apps-pattern).
 * External dependencies for software contained in chart-platform-services including resources such as secrets which are not managed by the helm charts implemented in the charts.
 
 
@@ -18,7 +18,7 @@ Supply values to additional functionality that you require. Prometheus, ArgoCD,
 and platform-services helm chart will be deployed by default:
 ```terraform
 module "bootstrap" {
-  source = "catalystsquad/catalyst-cluster-bootstrap/kubernetes"
+  source = "catalystcommunity/catalyst-cluster-bootstrap/kubernetes"
 
   prometheus_remote_write_username  = var.prometheus_remote_write_username
   prometheus_remote_write_password  = var.prometheus_remote_write_password
@@ -45,7 +45,7 @@ provider "kubectl" {
 }
 
 module "bootstrap" {
-  source = "catalystsquad/catalyst-cluster-bootstrap/kubernetes"
+  source = "catalystcommunity/catalyst-cluster-bootstrap/kubernetes"
 
   platform_services_values = templatefile("./helm-values/dev-platform-services.yaml", {
     "exampleSecretInput" : var.example_secret
@@ -57,9 +57,9 @@ module "bootstrap" {
 }
 ```
 
-### In tandem with [catalyst-platform module](https://github.com/catalystsquad/terraform-aws-catalyst-platform)
+### In tandem with [catalyst-platform module](https://github.com/catalystcommunity/terraform-aws-catalyst-platform)
 
-If you are using this module alongside the [catalyst-platform](https://github.com/catalystsquad/terraform-aws-catalyst-platform)
+If you are using this module alongside the [catalyst-platform](https://github.com/catalystcommunity/terraform-aws-catalyst-platform)
 module, you must configure the Kubernetes providers with dependencies on the
 output of the platform module. This module makes use of multiple providers for
 deploying kubernetes resources, so configure each with a similar configuration:
@@ -121,13 +121,13 @@ provider "kubectl" {
 
 
 module "platform" {
-  source = "catalystsquad/catalyst-platform/aws"
+  source = "catalystcommunity/catalyst-platform/aws"
 
   # other configuration ...
 }
 
 module "bootstrap" {
-  source = "catalystsquad/catalyst-cluster-bootstrap/kubernetes"
+  source = "catalystcommunity/catalyst-cluster-bootstrap/kubernetes"
   
   depends_on = [
     module.platform
@@ -186,5 +186,5 @@ No outputs.
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_platform_services"></a> [platform\_services](#module\_platform\_services) | catalystsquad/argocd-application/kubernetes | 1.0.1 |
+| <a name="module_platform_services"></a> [platform\_services](#module\_platform\_services) | catalystcommunity/argocd-application/kubernetes | 1.0.1 |
 <!-- END_TF_DOCS -->

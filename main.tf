@@ -101,12 +101,12 @@ resource "kubernetes_secret_v1" "cert_manager_cloudflare_api_token" {
 module "platform_services" {
   count = var.enable_platform_services ? 1 : 0
 
-  source  = "catalystsquad/argocd-application/kubernetes"
+  source  = "catalystcommunity/argocd-application/kubernetes"
   version = "1.0.1"
 
   name                   = "platform-services"
   source_chart           = "platform-services"
-  source_repo_url        = "https://raw.githubusercontent.com/catalystsquad/charts/main"
+  source_repo_url        = "https://raw.githubusercontent.com/catalystcommunity/charts/main"
   source_target_revision = var.platform_services_target_revision
   helm_values            = var.platform_services_values
 
